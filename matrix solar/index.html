@@ -13,8 +13,18 @@
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;color:var(--text);overflow-x:hidden;}
 
+/* ── CONTACT TOP BAR ── */
+#contact-bar{position:fixed;top:0;width:100%;z-index:1001;background:var(--dark);height:36px;overflow:hidden;transition:height .35s ease,opacity .35s ease;border-bottom:1px solid rgba(255,255,255,.1);}
+#contact-bar.hidden{height:0;opacity:0;pointer-events:none;}
+.cb-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:flex-end;align-items:center;height:36px;gap:28px;}
+.cb-link{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);font-size:.72rem;text-decoration:none;font-weight:500;letter-spacing:.01em;transition:color .2s;}
+.cb-link:hover{color:var(--orange);}
+.cb-link svg{width:12px;height:12px;stroke:currentColor;fill:none;flex-shrink:0;}
+.cb-sep{width:1px;height:14px;background:rgba(255,255,255,.15);}
+
 /* ── NAV ── */
-#nav{position:fixed;top:0;width:100%;z-index:1000;background:#fff;box-shadow:0 1px 0 #e2e8f0;transition:all .35s;}
+#nav{position:fixed;top:36px;width:100%;z-index:1000;background:#fff;box-shadow:0 1px 0 #e2e8f0;transition:top .35s ease,background .35s,box-shadow .35s;}
+#nav.bar-gone{top:0;}
 #nav.scrolled{background:var(--dark);box-shadow:0 4px 32px rgba(13,27,62,.3);}
 #nav.scrolled .nl{color:rgba(255,255,255,.85)!important;}
 #nav.scrolled .nl:hover{color:var(--orange)!important;}
@@ -26,7 +36,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);overflow-x:hidden;}
 #nav.scrolled .nl.active{color:var(--orange)!important;}
 
 /* ── HERO ── */
-.hero-wrap{display:flex;min-height:100vh;padding-top:68px;}
+.hero-wrap{display:flex;min-height:100vh;padding-top:104px;}
 .hero-left{width:42%;background:var(--dark);display:flex;flex-direction:column;justify-content:center;padding:72px 4% 100px 6%;position:relative;overflow:hidden;}
 .hero-left::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(232,96,26,.10) 0%,rgba(27,79,168,.08) 50%,transparent 75%);z-index:0;}
 .hero-left::after{content:'';position:absolute;top:-60px;right:-40px;width:220px;height:220px;border-radius:50%;border:2px solid rgba(232,96,26,.18);z-index:0;}
@@ -276,26 +286,27 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);overflow-x:hidden;}
 .proj-l{font-size:.75rem;color:var(--blue);font-weight:600;margin-top:7px;display:flex;align-items:center;gap:4px;}
 
 /* ── TESTIMONIALS ── */
-#testimonials{padding:80px 0;position:relative;overflow:hidden;}
-#testimonials::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;filter:brightness(.12) saturate(1.3);z-index:0;}
-#testimonials::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,27,62,.97) 0%,rgba(13,27,62,.92) 100%);z-index:1;}
+#testimonials{padding:88px 0;position:relative;overflow:hidden;}
+#testimonials::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat;filter:brightness(.10) saturate(1.3);z-index:0;}
+#testimonials::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,27,62,.98) 0%,rgba(27,79,168,.25) 50%,rgba(13,27,62,.98) 100%);z-index:1;}
 #testimonials .testi-inner-wrap{position:relative;z-index:2;}
 .testi-slides{overflow:hidden;}
 .testi-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);}
-.testi-card{flex:0 0 33.333%;padding:0 10px;}
-.testi-inner{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:24px;height:100%;transition:all .3s;}
-.testi-inner:hover{background:rgba(255,255,255,.1);transform:translateY(-4px);}
-.stars{display:flex;gap:3px;margin-bottom:14px;}
+.testi-card{flex:0 0 33.333%;padding:0 12px;}
+.testi-inner{background:linear-gradient(160deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.04) 100%);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:30px 28px;height:100%;transition:all .35s;position:relative;overflow:hidden;}
+.testi-inner::before{content:'"';position:absolute;top:-8px;right:20px;font-family:'Bebas Neue',sans-serif;font-size:7rem;color:rgba(232,96,26,.12);line-height:1;pointer-events:none;}
+.testi-inner:hover{background:linear-gradient(160deg,rgba(255,255,255,.12) 0%,rgba(232,96,26,.06) 100%);transform:translateY(-6px);border-color:rgba(232,96,26,.3);box-shadow:0 20px 60px rgba(0,0,0,.4);}
+.stars{display:flex;gap:4px;margin-bottom:16px;}
 .star{width:14px;height:14px;fill:var(--orange);}
-.testi-q{color:rgba(255,255,255,.8);font-size:.88rem;line-height:1.75;font-style:italic;margin-bottom:18px;}
-.testi-meta{display:flex;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.1);padding-top:14px;}
-.testi-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:.85rem;flex-shrink:0;}
-.testi-n{color:#fff;font-weight:700;font-size:.85rem;}
-.testi-r{color:rgba(255,255,255,.45);font-size:.72rem;margin-top:2px;}
-.testi-arrows{display:flex;justify-content:center;gap:12px;margin-top:32px;}
-.testi-arrow{width:44px;height:44px;border-radius:50%;border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;}
-.testi-arrow:hover{background:var(--orange);border-color:var(--orange);}
-.testi-dots-row{display:flex;justify-content:center;gap:8px;margin-top:14px;}
+.testi-q{color:rgba(255,255,255,.82);font-size:.9rem;line-height:1.8;font-style:italic;margin-bottom:22px;position:relative;z-index:1;}
+.testi-meta{display:flex;align-items:center;gap:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;}
+.testi-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:.88rem;flex-shrink:0;border:2px solid rgba(255,255,255,.15);}
+.testi-n{color:#fff;font-weight:700;font-size:.88rem;}
+.testi-r{color:rgba(255,255,255,.42);font-size:.72rem;margin-top:2px;letter-spacing:.01em;}
+.testi-arrows{display:flex;justify-content:center;gap:12px;margin-top:36px;}
+.testi-arrow{width:46px;height:46px;border-radius:50%;border:2px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;}
+.testi-arrow:hover{background:var(--orange);border-color:var(--orange);transform:scale(1.08);}
+.testi-dots-row{display:flex;justify-content:center;gap:8px;margin-top:16px;}
 .testi-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .25s;}
 .testi-dot.active{background:var(--orange);width:24px;border-radius:4px;}
 
@@ -344,7 +355,9 @@ body{font-family:'DM Sans',sans-serif;color:var(--text);overflow-x:hidden;}
 .map-box small{color:rgba(255,255,255,.45);font-size:.7rem;}
 
 /* ── FOOTER ── */
-footer{background:var(--dark);border-top:4px solid var(--orange);}
+footer{background:var(--dark);border-top:4px solid var(--orange);position:relative;overflow:hidden;}
+footer::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1600&q=40') center/cover no-repeat;filter:brightness(.10) saturate(1.3);z-index:0;}
+footer > div{position:relative;z-index:1;}
 .fl{color:rgba(255,255,255,.55);font-size:.83rem;text-decoration:none;display:block;margin-bottom:8px;transition:color .2s;}
 .fl:hover{color:var(--orange);}
 .ft{color:#fff;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.08);}
@@ -456,6 +469,26 @@ footer{background:var(--dark);border-top:4px solid var(--orange);}
 </style>
 </head>
 <body>
+
+<!-- ══════ CONTACT TOP BAR ══════ -->
+<div id="contact-bar">
+  <div class="cb-inner">
+    <a href="tel:+919729180709" class="cb-link">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      +91 97291 80709
+    </a>
+    <div class="cb-sep"></div>
+    <a href="mailto:matrixpetrohr@gmail.com" class="cb-link">
+      <svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      matrixpetrohr@gmail.com
+    </a>
+    <div class="cb-sep"></div>
+    <span class="cb-link" style="cursor:default;">
+      <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Mon – Sat: 9 AM – 7 PM
+    </span>
+  </div>
+</div>
 
 <!-- ══════ NAVBAR ══════ -->
 <nav id="nav">
@@ -745,37 +778,57 @@ footer{background:var(--dark);border-top:4px solid var(--orange);}
       </div>
 
       <div class="modal-section">
+        <h3>Sectors We Serve</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;">
+          <div style="background:linear-gradient(135deg,rgba(27,79,168,.3),rgba(27,79,168,.1));border:1px solid rgba(27,79,168,.4);border-radius:12px;padding:18px 20px;">
+            <div style="color:#7eb3ff;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">Residential</div>
+            <div style="color:#fff;font-weight:700;font-size:.95rem;margin-bottom:6px;">Home &amp; Housing Society</div>
+            <div style="color:rgba(255,255,255,.55);font-size:.8rem;line-height:1.65;">Rooftop systems for individual homes, bungalows, villas and housing societies. 1 KW to 20 KW. MNRE subsidy eligible. Grid-tied and hybrid options available.</div>
+          </div>
+          <div style="background:linear-gradient(135deg,rgba(232,96,26,.2),rgba(232,96,26,.06));border:1px solid rgba(232,96,26,.3);border-radius:12px;padding:18px 20px;">
+            <div style="color:var(--orange);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">Commercial</div>
+            <div style="color:#fff;font-weight:700;font-size:.95rem;margin-bottom:6px;">Shops, Offices &amp; Institutions</div>
+            <div style="color:rgba(255,255,255,.55);font-size:.8rem;line-height:1.65;">Rooftop and ground-mount systems for commercial buildings, malls, schools, hospitals and offices. 10 KW to 200 KW. HAREDA and net metering compliant.</div>
+          </div>
+          <div style="background:linear-gradient(135deg,rgba(27,79,168,.2),rgba(27,79,168,.05));border:1px solid rgba(27,79,168,.3);border-radius:12px;padding:18px 20px;">
+            <div style="color:#7eb3ff;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">Industrial</div>
+            <div style="color:#fff;font-weight:700;font-size:.95rem;margin-bottom:6px;">Factories, Plants &amp; Warehouses</div>
+            <div style="color:rgba(255,255,255,.55);font-size:.8rem;line-height:1.65;">Large-scale solar installations from 50 KW to 500 KW+ for industries and manufacturing units. Reduces captive power costs and qualifies for accelerated depreciation benefits.</div>
+          </div>
+          <div style="background:linear-gradient(135deg,rgba(34,197,94,.15),rgba(34,197,94,.04));border:1px solid rgba(34,197,94,.25);border-radius:12px;padding:18px 20px;">
+            <div style="color:#4ade80;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">Agricultural</div>
+            <div style="color:#fff;font-weight:700;font-size:.95rem;margin-bottom:6px;">Farms &amp; PM-KUSUM Scheme</div>
+            <div style="color:rgba(255,255,255,.55);font-size:.8rem;line-height:1.65;">Solar water pumps and ground-mount systems for farms. PM-KUSUM registered — up to 90% subsidy for farmers. Full documentation and DISCOM approval handled by us.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
         <h3>System Types — What's Right for You?</h3>
         <div class="modal-types">
           <div class="modal-type">
-            <div class="modal-type-icon">⚡</div>
             <div class="modal-type-title">On-Grid System</div>
-            <div class="modal-type-desc">Connected to electricity grid. No batteries needed. Electricity goes to grid, you earn credits (net metering). Best ROI — payback in 4–6 years. Ideal for homes & offices.</div>
+            <div class="modal-type-desc">Connected to electricity grid. No batteries needed. Electricity goes to grid, you earn credits (net metering). Best ROI — payback in 4–6 years. Ideal for homes and offices.</div>
           </div>
           <div class="modal-type">
-            <div class="modal-type-icon">🔋</div>
             <div class="modal-type-title">Off-Grid System</div>
-            <div class="modal-type-desc">100% independent from grid. Runs on solar + battery storage. Best for remote farms, villages, and areas with frequent power cuts. No electricity bill at all.</div>
+            <div class="modal-type-desc">100% independent from grid. Runs on solar and battery storage. Best for remote farms, villages, and areas with frequent power cuts. No electricity bill at all.</div>
           </div>
           <div class="modal-type">
-            <div class="modal-type-icon">🔄</div>
             <div class="modal-type-title">Hybrid System</div>
-            <div class="modal-type-desc">Grid + battery backup combined. Use solar first, store excess in battery, then draw from grid only if needed. Ideal for hospitals, schools & critical loads.</div>
+            <div class="modal-type-desc">Grid and battery backup combined. Use solar first, store excess in battery, then draw from grid only if needed. Ideal for hospitals, schools and critical loads.</div>
           </div>
           <div class="modal-type">
-            <div class="modal-type-icon">🌾</div>
             <div class="modal-type-title">PM-KUSUM Solar Pump</div>
-            <div class="modal-type-desc">Govt. scheme for farmers — up to 90% subsidy on solar water pumps. Matrix handles full documentation, DISCOM approval & subsidy processing.</div>
+            <div class="modal-type-desc">Government scheme for farmers — up to 90% subsidy on solar water pumps. Matrix handles full documentation, DISCOM approval and subsidy processing.</div>
           </div>
           <div class="modal-type">
-            <div class="modal-type-icon">🏭</div>
             <div class="modal-type-title">Ground Mount Farm</div>
-            <div class="modal-type-desc">50 KW to 500 KW+ solar farms on open land. Pile-driven or concrete structure. Suitable for industries, large farms & commercial power sale.</div>
+            <div class="modal-type-desc">50 KW to 500 KW+ solar farms on open land. Pile-driven or concrete structure. Suitable for industries, large farms and commercial power sale.</div>
           </div>
           <div class="modal-type">
-            <div class="modal-type-icon">💡</div>
             <div class="modal-type-title">Solar Street Lights</div>
-            <div class="modal-type-desc">Standalone solar LED street lights. No trenching, no electricity bill, no monthly cost. Perfect for villages, housing societies & industrial roads.</div>
+            <div class="modal-type-desc">Standalone solar LED street lights. No trenching, no electricity bill, no monthly cost. Perfect for villages, housing societies and industrial roads.</div>
           </div>
         </div>
       </div>
@@ -836,27 +889,27 @@ footer{background:var(--dark);border-top:4px solid var(--orange);}
         <h3>Key Components in Every Solar System</h3>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
           <div style="background:rgba(27,79,168,.12);border:1px solid rgba(27,79,168,.25);border-radius:10px;padding:14px 16px;">
-            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">☀️ Solar Panels</div>
-            <div style="color:rgba(255,255,255,.55);font-size:.78rem;line-height:1.6;">Convert sunlight to DC electricity. Warranted for 25 years. We use only Tier-1 BIS-certified panels from Waaree, Adani, Vikram, Longi & Trina.</div>
+            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">Solar Panels</div>
+            <div style="color:rgba(255,255,255,.55);font-size:.78rem;line-height:1.6;">Convert sunlight to DC electricity. Warranted for 25 years. We use only Tier-1 BIS-certified panels from Waaree, Adani, Vikram, Longi and Trina.</div>
           </div>
           <div style="background:rgba(27,79,168,.12);border:1px solid rgba(27,79,168,.25);border-radius:10px;padding:14px 16px;">
-            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">🔁 Solar Inverter</div>
+            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">Solar Inverter</div>
             <div style="color:rgba(255,255,255,.55);font-size:.78rem;line-height:1.6;">Converts DC to AC power for use in home/office. Brands: Growatt, Solis, ABB, Delta, Fronius. 5-year warranty standard.</div>
           </div>
           <div style="background:rgba(27,79,168,.12);border:1px solid rgba(27,79,168,.25);border-radius:10px;padding:14px 16px;">
-            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">🏗️ Mounting Structure</div>
+            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">Mounting Structure</div>
             <div style="color:rgba(255,255,255,.55);font-size:.78rem;line-height:1.6;">GI/Aluminium frames for rooftop; hot-dip galvanised pile-driven structure for ground mount. Wind-load tested up to 150 km/h.</div>
           </div>
           <div style="background:rgba(27,79,168,.12);border:1px solid rgba(27,79,168,.25);border-radius:10px;padding:14px 16px;">
-            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">🔌 DC & AC Cables</div>
+            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">DC &amp; AC Cables</div>
             <div style="color:rgba(255,255,255,.55);font-size:.78rem;line-height:1.6;">ISI-certified Polycab/Havells cables. UV-resistant DC cable for outdoor runs. Proper cable trays and earthing for safety compliance.</div>
           </div>
           <div style="background:rgba(27,79,168,.12);border:1px solid rgba(27,79,168,.25);border-radius:10px;padding:14px 16px;">
-            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">🔒 MCB / ACDB / DCDB</div>
-            <div style="color:rgba(255,255,255,.55);font-size:.78rem;line-height:1.6;">AC & DC distribution boxes with surge protection, fuses, and isolators. Schneider/Havells MCBs. Mandatory for safety & DISCOM compliance.</div>
+            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">MCB / ACDB / DCDB</div>
+            <div style="color:rgba(255,255,255,.55);font-size:.78rem;line-height:1.6;">AC and DC distribution boxes with surge protection, fuses, and isolators. Schneider/Havells MCBs. Mandatory for safety and DISCOM compliance.</div>
           </div>
           <div style="background:rgba(27,79,168,.12);border:1px solid rgba(27,79,168,.25);border-radius:10px;padding:14px 16px;">
-            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">📊 Net Meter</div>
+            <div style="color:#7eb3ff;font-weight:700;font-size:.85rem;margin-bottom:4px;">Net Meter</div>
             <div style="color:rgba(255,255,255,.55);font-size:.78rem;line-height:1.6;">Bidirectional meter installed by DISCOM after approval. Records units exported to grid — you earn credits on your electricity bill.</div>
           </div>
         </div>
